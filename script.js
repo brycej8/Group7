@@ -162,3 +162,32 @@ function searchContact()
 	}
 	
 }
+
+function saveCookie() {
+    let minutes = 20;
+    let date = new Date();
+    date.setTime(date.getTime() + (minutes * 60 * 1000));
+    let expires = "; expires=" + date.toUTCString() + "; path=/";
+
+    document.cookie = `userId=${userId}${expires}`;
+    document.cookie = `firstName=${encodeURIComponent(firstName)}${expires}`;
+    document.cookie = `lastName=${encodeURIComponent(lastName)}${expires}`;
+}
+
+function readCookie() {
+    userId = -1;
+    let cookies = document.cookie.split(";");
+
+    for (let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i].trim();
+        let [key, value] = cookie.split("=");
+
+        if (key === "userId") userId = parseInt(value);
+        if (key === "firstName") firstName = decodeURIComponent(value);
+        if (key === "lastName") lastName = decodeURIComponent(value);
+    }
+
+}
+
+document.addEventListener("DOMContentLoaded", readCookie);
+
