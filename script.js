@@ -1,58 +1,81 @@
+const urlBase = 'http://group7.brycejensenucf.website/API';
+const extension = 'php';
 let userId = 0;
 let firstName = "";
 let lastName = "";
 
-function doLogin()
-{
-	userId = 0;
-	firstName = "";
-	lastName = "";
-	
-	let login = document.getElementById("loginName").value;
-	let password = document.getElementById("loginPassword").value;
-//	var hash = md5( password );
-	
-	document.getElementById("loginResult").innerHTML = "";
+function doLogin() {
+    userId = 0;
+    firstName = "";
+    lastName = "";
 
-	let tmp = {login:login,password:password};
-//	var tmp = {login:login,password:hash};
-	let jsonPayload = JSON.stringify( tmp );
-	
-	let url = urlBase + '/Login.' + extension;
+    let login = document.getElementById("loginName").value;
+    let password = document.getElementById("loginPassword").value;
 
-	let xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
-	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	try
-	{
-		xhr.onreadystatechange = function() 
-		{
-			if (this.readyState == 4 && this.status == 200) 
-			{
-				let jsonObject = JSON.parse( xhr.responseText );
-				userId = jsonObject.id;
-		
-				if( userId < 1 )
-				{		
-					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
-					return;
-				}
-		
-				firstName = jsonObject.firstName;
-				lastName = jsonObject.lastName;
+    document.getElementById("loginResult").innerHTML = "";
 
-				saveCookie();
-	
-				window.location.href = "contact.html";
-			}
-		};
-		xhr.send(jsonPayload);
-	}
-	catch(err)
-	{
-		document.getElementById("loginResult").innerHTML = err.message;
-	}
+    let tmp = { login: login, password: password };
+    let jsonPayload = JSON.stringify(tmp);
 
+    let url = urlBase + '/Login.' + extension;
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+    try {
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                let jsonObject = JSON.parse(xhr.responseText);
+                userId = jsonObject.id;
+
+                if (userId < 1) {
+                    document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+                    return;
+                }
+
+                firstName = jsonObject.firstName;
+                lastName = jsonObject.lastName;
+
+                saveCookie();
+
+                // Redirect to the contacts dashboard after successful login
+                window.location.href = "contactFunctions.html";
+            }
+        };
+        xhr.send(jsonPayload);
+    } catch (err) {
+        document.getElementById("loginResult").innerHTML = err.message;
+    }
+}
+
+function addUser() {
+    let newUsername = document.getElementById("Createusername").value;
+    let newPassword = document.getElementById("Createpassword").value;
+
+    document.getElementById("registerResult").innerHTML = "";
+
+    let tmp = { login: newUsername, password: newPassword };
+    let jsonPayload = JSON.stringify(tmp);
+
+    let url = urlBase + "/addUser." + extension;
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("registerResult").innerHTML = "User registered!";
+        }
+    };
+
+    try {
+        xhr.send(jsonPayload);
+    }
+    catch (err) {
+        document.getElementById("registerResult").innerHTML = err.message;
+    }
 }
 
 function doLogout()
