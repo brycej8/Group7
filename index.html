@@ -1,0 +1,41 @@
+<html>
+<head>
+	<title>Contact Manager</title>
+	<script type="text/javascript" src="JS/script.js"></script>
+    <link href="CSS/style1.css" rel="stylesheet">	
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+	<script type="text/javascript">
+		
+	document.addEventListener('DOMContentLoaded', function() 
+	{
+		readCookie();
+	}, false);
+	</script>
+	
+</head>
+<body>
+
+<h1 id="title">Welcome to the Contact Manager </h1>
+
+<div id="authContainer">
+    <div>
+        <span id="inner-title">Log in</span>
+        <input type="text" id="loginName" placeholder="Username" />
+        <input type="password" id="loginPassword" placeholder="Password"/>
+        <button type="button" id="loginButton" class="buttons" onclick="doLogin();">Log in</button>
+        <span id="loginResult"></span>
+    </div>
+
+    <hr>
+
+    <div>
+        <span id="inner-title">Register</span>
+        <input type="text" id="Createusername" placeholder="Create Username" />
+        <input type="password" id="Createpassword" placeholder="Create Password"/>
+        <button type="button" id="registerButton" class="buttons" onclick="addUser();">Register</button>
+        <span id="registerResult"></span>
+    </div>
+</div>
+
+</body>
+</html>
