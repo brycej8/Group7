@@ -1,152 +1,103 @@
-body 
-{
-    background-color: #0000FF;
+body {
+    background-color: #262626;
+    font-family: 'Ubuntu', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-#title 
-{
+#title {
     font-size: 40px;
-    width: 100%;
-    margin: 2% 5%;
+    font-weight: bold;
+    text-align: center;
+    color: #bb86fc;
+}
+
+#authContainer {
+    width: 400px;
+    max-width: 90%;
+    padding: 25px;
+    background-color: #323232;
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+}
+
+#authContainer input {
+    font-size: 15px;
+    width: 90%;
+    padding: 8px;
+    margin: 15px 0;
+    border: none;
+    border-radius: 5px;
     text-align: left;
-    font-family: 'Ubuntu', sans-serif;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #656565;
+    color: white;
 }
 
-#loginDiv
-{
-    font-size: 30px;
-    width: 70%;
-    margin: 0;
-    padding: 25px;
-    background-color: #00a5e0;
-}
-
-#RegisterUN
-{
-    font-size: 30px;
-    width: 70%;
-    margin: 0;
-    padding: 25px;
-    background-color: #00a5e0;
-
-}
-
-
-#accessUIDiv
-{
-    font-size: 30px;
-    width: 70%;
-    margin-left: 15%;
-    padding: 25px;
-    background-color: #b2b2b2;
-}
-
-.buttons
-{
-    font-size: 30px;
-    border-radius: 25px;
-    width: 50%;
-    margin-left: 25%;
-    font-family: 'Ubuntu', sans-serif;
-    color:#ef00bb
-}
-
-.buttons:hover{
-    background-color: #14bbd94f;
-    color: #efa700;
-    opacity: 50%;
-}
-
-#loginName
-{
-	font-size: 30px;
-}
-
-#Createusername
-{
-	font-size: 30px;
-}
-#Createpassword{
-    font-size: 30px;
-}
-
-#loginPassword
-{
-	font-size: 30px;
-}
-#searchText
-{
-	font-size: 30px;
-}
-#colorText
-{
-	font-size: 30px;
-}
-
-input[type="text"],input[type="password"]{
-    border-radius: 25px;
-    text-align: center;
-    width: 80%;
-    margin-left: 10%;
-    margin-bottom: 2%;
-    font-family: 'Ubuntu', sans-serif;
-}
-
-#inner-title{
-    display: inline-block;
-    font-size: 0.8em;
+.buttons {
+    font-size: 18px;
+    border-radius: 5px;
     width: 90%;
-    text-align: center;
-    margin-left: 5%;
-    margin-bottom: 2%;
+    padding: 8px;
     font-family: 'Ubuntu', sans-serif;
-    color: #f1046f;
+    background-color: #bb86fc;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease;
 }
 
+.buttons:hover {
+    background-color: #1e1e1e;
+    opacity: 80%;
+}
 
+#inner-title {
+    font-size: 27px;
+    text-align: left;
+    display: block;
+    color: white;
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+
+input::placeholder {
+    color: #a9a9a9;
+    opacity: 1;
+    font-style: italic;
+}
+
+/* Login & Register Result Messages */
 #loginResult{
-    display: inline-block;
-    font-size: 0.8em;
+    font-size: 0.9em;
+    color: #ff4d4d;
+    margin-top: 8px;
+    display: block;
+    text-align: center;
+}
+#registerResult{
+    font-size: 0.9em;
+    color: #34b233;
+    margin-top: 8px;
+    display: block;
+    text-align: center;
+}
+
+/* Horizontal Separator */
+hr {
+    border: 1px solid #444;
     width: 90%;
-    text-align: center;
-    margin-left: 5%;
-    margin-bottom: 2%;
-    font-family: 'Ubuntu', sans-serif;
-    color: #95060a;
-}
-
-#userName{
-    display: inline-block;
-    width: 80%;
-    margin-left: 10%;
-    text-align: center;
-}
-
-#logoutButton{
-    width: 20%;
-    margin-left: 40%;
-}
-
-select{
-    width: 30%;
-    margin-left: 35%;
-    margin-top: 2%;
-    font-size: 0.75em;
-    font-family: 'Ubuntu', sans-serif;
-}
-
-#colorSearchResult{
-    display: none;
-}
-
-#colorAddResult{
-    display: inline-block;
-    font-size: 0.8em;
-    width: 90%;
-    text-align: center;
-    margin-left: 5%;
-    margin-top: 2%;
-    margin-bottom: 1%;
-    font-family: 'Ubuntu', sans-serif;
-    color: #95060a;
+    margin: 10px auto;
 }
