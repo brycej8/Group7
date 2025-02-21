@@ -1,8 +1,8 @@
 <html>
 <head>
 	<title>Contact Manager</title>
-	<script type="text/javascript" src="script.js"></script>
-    <link href="style1.css" rel="stylesheet">	
+	<script type="text/javascript" src="JS/script.js"></script>
+    <link href="CSS/style1.css" rel="stylesheet">	
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 	
 	<script type="text/javascript">
@@ -15,33 +15,31 @@
 </head>
 <body>
 
-<h1 id="title">Group 7 Contact Manager</h1>
+	<h1 id="title">Group 7 Contact Manager</h1>
 
-<div id="authContainer">
-	<br />
+	<div id="authContainer">
 
-	<input type="text" id="searchText" placeholder="Contact To Search For"/>
-	<button type="button" id="searchContactButton" class="buttons" onclick="searchContact();"> Search Contact </button><br />
-	<span id="contactSearchResult"></span>
-	<p id="contactList">
+		<input type="text" id="searchText" placeholder="Contact To Search For"/>
+		<button type="button" id="searchContactButton" class="buttons" onclick="searchContact();"> Search Contact </button>
+		<span id="contactSearchResult"></span>
+		<p id="contactList">
+		</p>
+
+		<input type="text" id="contactText" placeholder="Contact To Add">
+		<button type="button" id="addContactButton" class="buttons" onclick="addContact();"> Add Contact </button>
+		<span id="contactAddResult"></span>
+
+		<input type="text" id="contactText" placeholder="Contact To Delete">
+		<button type="button" id="deleteContactButton" class="buttons" onclick="deleteContact();"> Delete Contact </button>
+		<span id="contactDeleteResult"></span>
+	</div>
+
 	</p>
 
-	<input type="text" id="contactText" placeholder="Contact To Add">
-	<button type="button" id="addContactButton" class="buttons" onclick="addContact();"> Add Contact </button><br />
-	<span id="contactAddResult"></span>
-	</b>
-
-    <input type="text" id="contactText" placeholder="Contact To Delete">
-	<button type="button" id="deleteContactButton" class="buttons" onclick="deleteContact();"> Delete Contact </button><br />
-	<span id="contactDeleteResult"></span>
-</div>
-
-</p>
-
-<div>
-	<span id="userName"></span><br />
-	<button type="button" id="logoutButton" class="buttons" onclick="doLogout();"> Log Out </button>
-</div>
+	<div>
+		<span id="userName"></span><br />
+		<button type="button" id="logoutButton" class="buttons" onclick="doLogout();"> Log Out </button>
+	</div>
 
 </body>
 </html>
