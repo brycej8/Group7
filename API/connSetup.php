@@ -8,7 +8,7 @@ $database = "group7";
 
 $inData = json_decode(file_get_contents("php://input"), true);
 
-# $conn = new mysqli($servername, $username, $password, $database);
+$conn = new mysqli($servername, $username, $password, $database);
 $conn = new mysqli('localhost', 'root', '', 'COP');
 if ($conn->connect_error) {
     sendError("Database connection failed.");
