@@ -102,3 +102,41 @@ hr {
     width: 90%;
     margin: 10px auto;
 }
+
+table {
+    border-collapse: collapse;
+    border: 2px solid rgb(140 140 140);
+    font-family: 'Ubuntu', sans-serif;
+    color: #ffffff;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+thead,
+tfoot {
+  background-color: #323232;
+}
+
+th,
+td {
+  border: 1px solid rgb(160 160 160);
+  padding: 8px 10px;
+}
+
+td:last-of-type {
+  text-align: center;
+}
+
+tbody > tr:nth-of-type(even) {
+  background-color: rgb(237 238 242);
+}
+
+tfoot th {
+  text-align: left;
+}
+
+tfoot td {
+  font-weight: bold;
+}
