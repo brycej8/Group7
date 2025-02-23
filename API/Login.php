@@ -1,4 +1,5 @@
 <?php
+require 'connSetup.php';
 session_start(); // Start a session
 
 // Enable CORS headers to allow requests from any origin
@@ -10,18 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit(0);
 }
 
-$servername = "44.223.16.37";
-$username = "root";  
-$password = "!T!Wwzckon7m";  
-$database = "group7";  
-
 $inData = getRequestInfo();
-$conn = new mysqli($servername, $username, $password, $database);
-
-if ($conn->connect_error) {
-    returnWithError("Database connection failed.");
-    exit();
-}
 
 if (!isset($inData["login"]) || !isset($inData["password"])) {
     returnWithError("Missing login or password.");
