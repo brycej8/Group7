@@ -4,6 +4,10 @@ let userId = 0;
 let firstName = "";
 let lastName = "";
 
+window.onload = function() {
+    loadContacts();
+};
+
 function doLogin() {
     userId = 0;
     firstName = "";
@@ -107,6 +111,7 @@ function addContact()
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				document.getElementById("contactAddResult").innerHTML = "Contact has been added";
+				loadContacts();
 			}
 		};
 		xhr.send(jsonPayload);
@@ -138,6 +143,7 @@ function deleteContact()
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				document.getElementById("contactDeleteResult").innerHTML = "Contact has been deleted successfully";
+				loadContacts();
 			}
 		};
 		xhr.send(jsonPayload);
@@ -192,6 +198,50 @@ function searchContact()
 		document.getElementById("contactSearchResult").innerHTML = err.message;
 	}
 	
+}
+
+function loadContacts() {
+	let url = urlBase + '/GetContact.' + extension;
+
+	let tmp = {userId: userId};
+	let jsonPayload = JSON.stringify(tmp);
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTG-8");
+
+	try {
+		xhr.onreadystatechange = function() {
+			if(this.readyState == 4 && this.status == 200)
+			{
+				let response = JSON.parse(xhr.responseText);
+				displayContacts(response.contacts);
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err) {
+		document.getElementById("contactDeleteResult").innerHTML = err.message;
+	}
+}
+
+function displayContacts(contacts) {
+    let contactList = document.getElementById("contactList");
+    contactList.innerHTML = "";
+
+    contacts.forEach(contact => {
+        let listItem = document.createElement("li");
+        listItem.textContent = contact.name;
+
+        let deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        deleteButton.onclick = function () {
+            deleteContact(contact.id);
+        };
+
+        listItem.appendChild(deleteButton);
+        contactList.appendChild(listItem);
+    });
 }
 
 function saveCookie() {
