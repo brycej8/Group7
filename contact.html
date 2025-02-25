@@ -25,20 +25,15 @@
 		<p id="contactList">
 		</p>
 
-		<input type="text" id="contactText" placeholder="Contact To Add">
+		<input type="text" id="name" placeholder="Name">
+		<input type="text" id="phonenumber" placeholder="Phone Number">
+		<input type="text" id="email" placeholder="Email">
 		<button type="button" id="addContactButton" class="buttons" onclick="addContact();"> Add Contact </button>
 		<span id="contactAddResult"></span>
 
 		<input type="text" id="deleteText" placeholder="Contact To Delete">
 		<button type="button" id="deleteContactButton" class="buttons" onclick="deleteContact();"> Delete Contact </button>
 		<span id="contactDeleteResult"></span>
-	</div>
-
-	</p>
-
-	<div id="List">
-		<ul id="contactList"></ul>
-		<p id="contactDeleteResult"></p>
 	</div>
 
 	</p>
@@ -51,7 +46,7 @@
 				<th scope="col">Phone Number</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody id ="contactTableBody">
 			<tr>
 				<th scope="row">Chris</th>
 				<td>chrisr23@gmail.com</td>

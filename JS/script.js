@@ -93,10 +93,12 @@ function doLogout()
 
 function addContact()
 {
-	let newContact = document.getElementById("contactText").value;
+	let name = document.getElementById("name").value;
+	let number = document.getElementById("phonenumber").value;
+	let email = document.getElementById("email").value;
 	document.getElementById("contactAddResult").innerHTML = "";
 
-	let tmp = {contact:newContact,userId,userId};
+	let tmp = {name: name, number: number, email: email, userId: userId};
 	let jsonPayload = JSON.stringify( tmp );
 
 	let url = urlBase + '/AddContact.' + extension;
@@ -226,21 +228,37 @@ function loadContacts() {
 }
 
 function displayContacts(contacts) {
-    let contactList = document.getElementById("contactList");
+    let contactList = document.getElementById("contactTableBody");
     contactList.innerHTML = "";
 
     contacts.forEach(contact => {
-        let listItem = document.createElement("li");
-        listItem.textContent = contact.name;
+        let row = document.createElement("tr");
 
+		let name = document.createElement("td");
+		name.textContent = contact.name;
+		row.appendChild(name);
+
+		let number = document.createElement("td");
+		number.textContent = contact.number;
+		row.appendChild(number);
+
+		let email = document.createElement("td");
+		email.textContent = contact.email;
+		row.appendChild(email);
+
+		let action = document.createElement("td");
         let deleteButton = document.createElement("button");
         deleteButton.textContent = "Delete";
+		deleteButton.classList.add("delete-button");
+
         deleteButton.onclick = function () {
             deleteContact(contact.id);
         };
 
-        listItem.appendChild(deleteButton);
-        contactList.appendChild(listItem);
+        action.appendChild(deleteButton);
+        row.appendChild(action);
+
+		contactList.appendChild(row);
     });
 }
 
